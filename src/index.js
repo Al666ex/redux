@@ -1,17 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './components/app';
+import {Provider} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
+import ErrorBoundry from './components/error-boundry';
+import RestoService from './services/resto-service';
+import RestoServiceContext from './components/resto-service-context';
+import store from './store'
+
+
+import './index.scss';
+
+
+const restoService = new RestoService();
+//const test = 10;
+                         
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <Provider store={store}>
+        <ErrorBoundry>            
+            <RestoServiceContext.Provider value={restoService}>
+                <Router>
+                    <App />
+                </Router>
+            </RestoServiceContext.Provider>
+        </ErrorBoundry>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    </Provider>
+    
+    , document.getElementById('root'));
+

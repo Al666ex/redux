@@ -1,0 +1,11 @@
+.rw-combobox-input{
+    width: 60px;
+}
+
+.sendOrder{
+    display: block;
+    position: relative;
+    width : 130px;
+    height: 40px;
+    margin: 0 auto;
+}
