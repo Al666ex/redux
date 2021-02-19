@@ -22,6 +22,7 @@ const reducers = (state=initialState, action) => {
             }
 
         case 'ITEM_ADD_TO_CART' :
+            //const total = state.items.reduce((sum, current) => sum + (current.price * current.qty), 0)
             const id = action.payload
 
             const checkItem = state.items.find(item => item.id === id)

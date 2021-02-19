@@ -3,11 +3,13 @@ import cartIcon from './shopping-cart-solid.svg';
 import './app-header.scss';
 import {Link} from 'react-router-dom'
 import {connect}  from 'react-redux'
+import {invoice} from '../../methods/index'
 
 class AppHeader extends React.Component{
     render(){
         const {items} = this.props;
-        const total = items.reduce((sum, current) => sum + (current.price * current.qty), 0)
+        //const total = items.reduce((sum, current) => sum + (current.price * current.qty), 0)
+        const total = invoice(items);
 
         return (
             <header className="header">
