@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import MenuListItem from '../menu-list-item';
 import {connect} from 'react-redux'
 import WithRestoService from '../hoc'
-import {MenuLoaded, Menurequested, AddToCart} from '../../actions'
+//import {MenuLoaded, Menurequested, AddToCart} from '../../actions'
+import * as actions from '../../actions'
 import Spinner from '../spinner'
 
 import './menu-list.scss';
@@ -14,6 +15,24 @@ class MenuList extends Component {
         const {RestoService} = this.props;
         RestoService.getMenuItems()
           .then(res => this.props.MenuLoaded(res))
+          
+    }
+
+    onDisable(id){
+        const {items} = this.props
+        let search;
+        if(items.length){            
+                let test = items.find(it => 
+                it.id === id && it.limit === false                    
+            )
+            search =  test ?   (search = false) : (search = true)
+        }
+
+        if(items === undefined){
+            search = true
+        }
+        
+        return search 
     }
 
     render() {
@@ -29,8 +48,12 @@ class MenuList extends Component {
                     menuItems.map(menuItem => {
                         return  <MenuListItem 
                                     key={menuItem.id}  
-                                    menuItem={menuItem} 
-                                    onAddToCart={() => this.props.AddToCart(menuItem.id)}
+                                    menuItem={menuItem}  
+                                    onDisable={this.onDisable(menuItem.id)}
+                                    onAddToCart={() => {
+                                        this.props.AddToCart(menuItem.id) 
+                                    } 
+                                    }
                                 />
                     })
                 }
@@ -43,14 +66,15 @@ class MenuList extends Component {
 const mapStateToProps = (state) => {
     return {
         menuItems : state.menu,
-        loading : state.loading
+        loading : state.loading,
+        items : state.items
     }
 }
 
-const mapDispatchToProps = {
-        MenuLoaded,       
-        Menurequested,
-        AddToCart
-}
+// const mapDispatchToProps = {
+//         MenuLoaded,       
+//         Menurequested,
+//         AddToCart       
+// }
 
-export default WithRestoService()(connect(mapStateToProps,mapDispatchToProps)(MenuList));
+export default WithRestoService()(connect(mapStateToProps,actions)(MenuList));

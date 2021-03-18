@@ -9,3 +9,11 @@
     height: 40px;
     margin: 0 auto;
 }
+
+/* form{
+    visibility:hidden;
+} */
+
+form input{
+    margin-top: 10px;
+}
