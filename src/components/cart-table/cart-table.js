@@ -2,12 +2,11 @@ import React from 'react';
 import './cart-table.scss';
 import './cart-table.css'
 import {DeleteItem, ChangeQTY, EmptyCart} from '../../actions'
-//import {postData} from '../../services/resto-service'
-//import postDate from '../../services/post-service'
+
 import PostDate from '../../services/post-service'
 
 import {connect} from 'react-redux'
-import { Combobox, DropdownList  } from 'react-widgets'
+import { Combobox } from 'react-widgets'
 import "react-widgets/dist/css/react-widgets.css";
 import {invoice} from '../../methods/index'
 
@@ -22,11 +21,20 @@ class CartTable extends React.Component{
         e.preventDefault();
         const {items} = this.props;
 
-        const obj = {
-            "name" : "order",
-            "invoice" : invoice(items),
-            "description" : items
-            //"order" : 
+        let dt = new Date()
+        //dt = dt.setTime(dt.getTime()+dt.getTimezoneOffset())
+        //dt = new Date(dt)
+
+        
+        dt = new Date(dt.valueOf() + dt.getTimezoneOffset()*(-1) * 60000)
+             
+
+        const obj = {            
+            //"date" : new Date().toLocaleDateString(['ban', 'id']),
+            //"date" : new Date(),
+            "date" : dt,
+            "total" : invoice(items),
+            "description" : items             
         }
 
         this.postDate.sendData(JSON.stringify(obj))        

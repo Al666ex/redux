@@ -1,5 +1,6 @@
 export default class PostDate{
   _ApiBase = 'http://localhost:3003'
+  //_ApiBase = 'http://92.115.180.180:3003'
   
   async postData(url,data) {
         const path = `${this._ApiBase}/${url}`
@@ -19,7 +20,7 @@ export default class PostDate{
   }
   
   async sendData(obj){
-    return await this.postData('requests',obj)
+    return await this.postData('sales',obj)
   }  
   
 }

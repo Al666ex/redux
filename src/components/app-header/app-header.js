@@ -20,6 +20,9 @@ class AppHeader extends React.Component{
                     <img className="header__cart" src={cartIcon} alt="cart"></img>
                     Total: {total ? total : null} $
                 </Link>
+                <Link className='header__link' to="/sales">
+                    Sales
+                </Link>
             </header>
         )
     

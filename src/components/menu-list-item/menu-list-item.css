@@ -1,0 +1,6 @@
+
+.access {
+    /*display :none;*/
+    pointer-events: none;
+    background-color: brown;
+}

@@ -5,12 +5,22 @@ const MenuLoaded = (newMenu) =>
     payload : newMenu
 })
 
-
 const Menurequested = () => {
     return{
         type : 'MENU_REQUESTED'
     }    
 }
+
+const SalesLoaded = (newSales) => 
+({
+    type : 'SALES_LOADED',
+    payload : newSales
+})
+
+const SalesRequested = () => 
+({
+    type : 'SALES_REQUESTED'
+})
 
 const DeleteItem = (id) => {
     return{
@@ -38,4 +48,4 @@ const EmptyCart = () => ({
     type : 'EMPTY_CART'
 })
 
-export {MenuLoaded, Menurequested, AddToCart, DeleteItem, ChangeQTY, EmptyCart}
+export {MenuLoaded, Menurequested, SalesLoaded, SalesRequested, AddToCart, DeleteItem, ChangeQTY, EmptyCart}
