@@ -49,8 +49,8 @@ class SaleItem extends React.Component{
 
         return(
             <div className="sales">
-            <h1 className="sales__title">Информация о заказе</h1>
-            <div className="sales__item ulHeader">
+                <h1 className="sales__title">Информация о заказе</h1>
+                <div className="sales__item ulHeader">
                     <div className='sales__title ulHeaderPadding1'>№</div>
                     <div className='sales__title ulHeaderPadding2'>Счёт</div>
                     <div className='sales__title ulHeaderPadding3'>Дата</div>                                
@@ -62,7 +62,7 @@ class SaleItem extends React.Component{
                         <div className='sales__title'>{id}</div>
                         <div className='sales__title'>{total}</div>
                         <div className='sales__title'>{date}</div>   
-                    </div>
+                </div>
 
 
                 <div  className="container sales__list">
@@ -71,11 +71,10 @@ class SaleItem extends React.Component{
                         return(
                             <div key={id}>
                                 <div  className='sales__title sales__item'>{title}</div>
-                                <div className="cart__item-title">ID блюда {id}</div>
-                                
-                                <div className="cart__item-title">Количество {qty}</div>
-                                <div className="cart__item-title">Цена за еденицу {price}</div>    
-                                <div className="cart__item-title">Стоимость {qty*price}</div>
+                                <div className="sales__item">ID блюда {id}</div>                                
+                                <div className="sales__item">Количество {qty}</div>
+                                <div className="sales__item">Цена за еденицу {price}</div>    
+                                <div className="sales__item">Стоимость {qty*price}</div>
                             </div>
                         )
                     })}
