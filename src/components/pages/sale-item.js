@@ -48,10 +48,40 @@ class SaleItem extends React.Component{
         const {id, total, date, description} = item            
 
         return(
-            <div className='"list-group-item"'>
-                <h1>{id}</h1>
-                <h1>{total}</h1>
-                <h1>{date}</h1>
+            <div className="sales">
+            <h1 className="sales__title">Информация о заказе</h1>
+            <div className="sales__item ulHeader">
+                    <div className='sales__title ulHeaderPadding1'>№</div>
+                    <div className='sales__title ulHeaderPadding2'>Счёт</div>
+                    <div className='sales__title ulHeaderPadding3'>Дата</div>                                
+
+                </div>
+
+
+                <div className="sales__item ulHeader">
+                        <div className='sales__title'>{id}</div>
+                        <div className='sales__title'>{total}</div>
+                        <div className='sales__title'>{date}</div>   
+                    </div>
+
+
+                <div  className="container sales__list">
+
+                    {description.map(({id,title,price,qty}) => {
+                        return(
+                            <div key={id}>
+                                <div  className='sales__title sales__item'>{title}</div>
+                                <div className="cart__item-title">ID блюда {id}</div>
+                                
+                                <div className="cart__item-title">Количество {qty}</div>
+                                <div className="cart__item-title">Цена за еденицу {price}</div>    
+                                <div className="cart__item-title">Стоимость {qty*price}</div>
+                            </div>
+                        )
+                    })}
+
+            </div>
+
             </div>
         )
     }
